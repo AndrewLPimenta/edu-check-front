@@ -1,0 +1,581 @@
+:root {
+    /* Cores de texto */
+    --cor-textos-1: #003f5c;  /* Azul escuro */
+    --cor-textos-2: #58a6ff;  /* Azul claro */
+    --cor-textos-3: #c0d6e4;  /* Azul pálido */
+    --cor-textos-4: #001f3d;  /* Azul bem escuro */
+
+    /* Cores de fundo */
+    --cor-fundo-1: #0d1b2a;  /* Fundo escuro */
+    --cor-fundo-2: #06080d;  /* Azul escuro (modo escuro) */
+    --cor-fundo-3: #ffffff;  /* Fundo claro */
+    --cor-fundo-4: #e6f1ff;  /* Azul claro (modo claro) */
+    --cor-fundo-5: #f5fafd;  /* Fundo claro suave */
+
+    /* Botão e ícones */
+    --cor-botao-1: #0077b6;  /* Azul vibrante para o botão */
+    --cor-botao-2: #00b4d8;  /* Azul mais claro para o botão */
+    --cor-botao-3: #90e0ef;  /* Azul muito claro (hover ou borda) */
+}
+
+/* Modo Claro */
+body.light-mode {
+    background-color: var(--cor-fundo-3);
+    color: var(--cor-fundo-2);
+}
+
+/* Modo Escuro */
+body.dark-mode {
+    background-color: var(--cor-fundo-2);
+    color:var(--cor-fundo-3);
+}
+
+/*  Estilização dos links */
+.nav-list a {
+  opacity: 1;
+  background-color: transparent;
+  border: none; /* 🔥 Removendo a borda para evitar conflito */
+  position: relative; /* 🔹 Necessário para a animação */
+  text-decoration: none; /* 🔥 Removendo o sublinhado padrão */
+  padding-bottom: 5px; /* 🔹 Espaço para o sublinhado animado */
+  transition: color 0.3s ease-in-out; /* 🔥 Transição suave da cor do texto */
+  font-weight: 600;
+}
+
+/* 🔥 Criando a linha animada abaixo do texto */
+.nav-list a::after {
+  content: ""; /* 🔹 Elemento invisível */
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--cor-dark-hover); /* 🔹 Cor padrão (modo escuro) */
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+
+/*  Modo Escuro */
+
+body.dark-mode .nav-list a {
+  color: var(--cor-textos-3); 
+}
+
+body.light-mode .nav-list a {
+  color: var(--cor-textos-1) !important; 
+}
+
+
+
+body.dark-mode .nav-list a::after {
+  background-color: var(--cor-textos-3); /* 🔥 Cor no modo escuro */
+}
+
+/* ☀️ Modo Claro */
+body.light-mode .nav-list a::after {
+  background-color: var(--cor-textos-4); /* 🔥 Cor no modo claro */
+}
+
+/* Animação ao passar o mouse */
+.nav-list a:hover::after {
+  width: 100%; /* 🔹 Expande o sublinhado */
+}
+
+body.light-mode  .nav-list a:hover {
+  color: var(--cor-textos-1); /* 🔥 Mudar cor do texto no hover */
+}
+
+body.dark-mode  .nav-list a:hover {
+  color: var(--cor-textos-2); /* 🔥 Mudar cor do texto no hover */
+}
+
+
+
+
+/*  Estilização base do botão */
+.animated-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 36px;
+
+  font-size: 16px;
+  background-color: rgba(8, 8, 8, 0.2) !important; /* 🔹 Cor semi-transparente */
+backdrop-filter: blur(10px); /* 🔹 Efeito de desfoque */
+-webkit-backdrop-filter: blur(10px); /* 🔹 Suporte para Safari *//* 🔹 Fundo sempre transparente */
+  border-radius: 100px;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/*  Ícones SVG dentro do botão */
+.animated-button svg {
+  position: absolute;
+  width: 24px;
+  z-index: 9;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* 🔥 Configuração do círculo animado */
+.animated-button .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* 🔥 Texto do botão */
+.animated-button .text {
+  position: relative;
+  z-index: 1;
+  transform: translateX(-12px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* 🔥 Efeito ao passar o mouse */
+.animated-button:hover {
+  box-shadow: 0 0 0 12px transparent;
+  border-radius: 12px;
+}
+
+/* 🔥 Movimentação dos ícones ao passar o mouse */
+.animated-button:hover .arr-1 {
+  right: -25%;
+}
+
+.animated-button:hover .arr-2 {
+  left: 16px;
+}
+
+/* 🔥 Efeito no texto ao passar o mouse */
+.animated-button:hover .text {
+  transform: translateX(12px);
+}
+
+/* 🔥 Efeito ao clicar */
+.animated-button:active {
+  scale: 0.95;
+  box-shadow: 0 0 0 4px var(--cor-borda);
+}
+
+/* 🔥 Aumento do círculo ao passar o mouse */
+.animated-button:hover .circle {
+  width: 250px;
+  height: 220px;
+  opacity: 1;
+}
+
+/* 🎨 MODO CLARO - Personalização de Cores */
+
+
+body.light-mode .animated-button {
+  color: var(--cor-textos-3); /* 🔹 Cor do texto */
+  box-shadow: 0 0 0 2px var(--cor-botao-2); /* 🔹 Cor da borda */
+  border: 1px solid var(--cor-botao-1); 
+}
+
+body.light-mode .animated-button svg {
+  color: var(--cor-textos-1) !important; /* 🔹 Cor do texto */
+  fill: var(--cor-botao-1); /* 🔹 Cor do ícone */
+}
+
+body.light-mode .animated-button .circle {
+  color: var(--cor-textos-1) !important; /* 🔹 Cor do texto */
+  background-color: var(--cor-botao-2); /* 🔹 Cor da animação do círculo */
+}
+
+/* 🌙 MODO ESCURO - Personalização de Cores */
+body.dark-mode .animated-button {
+  color: var(--cor-textos-3) !important; /* 🔹 Cor do texto */
+  box-shadow: 0 0 0 2px var(--cor-botao-3); /* 🔹 Cor da borda */
+  border: 1px solid var(--cor-botao-1); 
+}
+
+body.dark-mode .animated-button svg {
+  color: var(--cor-textos-3); /* 🔹 Cor do texto */
+
+  fill: var(--cor-botao-1); /* 🔹 Cor do ícone */
+}
+
+body.dark-mode .animated-button .circle {
+  color: var(--cor-textos-3); /* 🔹 Cor do texto */
+  background-color: var(--cor-fundo-1); /* 🔹 Cor da animação do círculo */
+}
+
+
+
+
+.switch {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 60px;
+    height: 30px;
+    background-color: var(--cor-botao-1);
+    border-radius: 30px;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.switch .circle {
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid #58a6ff;
+    transition: 0.3s;
+    box-shadow: 1px 1px 15px 2px #003f5c;
+}
+
+.switch .moon {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    fill: var(--cor-textos-4);
+    transition: 0.3s;
+}
+
+.switch .sun {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.switch .sun .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0 0 8px #003f5c;
+}
+
+.switch input:checked + .moon {
+    left: 35px;
+    opacity: 0;
+}
+
+.switch input:checked + .moon + .sun {
+    opacity: 1;
+}
+
+.switch input:checked .circle {
+    left: 32px;
+    background-color: var(--cor-botao-2);
+    border-color: var(--cor-botao-2);
+    box-shadow: 1px 1px 30px 12px var(--cor-botao-2);
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+}
+
+/* Ajustes do logo */
+.logo {
+    width: 100px;
+    cursor: pointer;
+    transition: 0.5s;
+    z-index: 9999; /* Garantir que o logo fique acima de outros elementos */
+  }
+  
+  /* Flexbox para alinhamento */
+  .flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    z-index: 9998;
+  }
+
+  /* Estilo do header fixo */
+  header{
+    width: 100%;
+    padding: 50px 4%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: transparent; /* Adiciona cor de fundo ao header */
+    transition: 0.5s;
+    z-index: 9999; /* Garantir que o header esteja acima dos outros elementos */
+  }
+
+  body.light-mode .nav-list li a {
+    color: var(--cor-fundo-2); /* Cor para o modo claro */
+  }
+  
+  /* Modo Escuro */
+  body.dark-mode .nav-list li a {
+    color: var(--cor-fundo-4); /* Cor para o modo escuro */
+  }
+  
+  .nav-list li a {
+    text-decoration: none;
+    transition: color 0.3s ease; /* Adicionando uma transição suave */
+  }
+  
+  /* Menu de navegação */
+  .nav.active .nav-list li a {
+    position: relative;
+    text-decoration: none;
+    transition: 0.5s;
+  }
+  
+  /* Efeito de sublinhado ao passar o mouse */
+  .nav.active .nav-list li a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    transition: width 0.5s;
+  }
+  
+  .nav.active .nav-list li a:hover::after {
+    width: 100%;
+  }
+  
+  /* Listagem de itens no menu */
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  /* Botões de contato */
+  .btn-contato a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.5s;
+  }
+  
+  .btn-contato .btn-2 {
+    background-color: transparent;
+    border: 2px solid var(--cor-textos-3);
+    text-decoration: underline var(--cor-textos-3);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+  }
+  
+  header.rolagem {
+    padding: 20px 4%;
+  }
+
+  /* Modo Claro */
+body.light-mode header.rolagem {
+    padding: 30px 4%; /* Padding maior no modo escuro */
+}
+
+/* Modo Escuro */
+body.dark-mode header.rolagem {
+  padding: 30px 4%; /* Padding maior no modo escuro */
+  background-color: var(--cor-fundo-1);
+}
+
+  /* Modo Claro */
+body.light-mode .btn-contato button{
+    color: var(--cor-fundo-5);
+    background-color: var(--cor-textos-1);
+}
+/* Modo Escuro */
+body.dark-mode   .btn-contato button {
+    color: var(--cor-textos-1);
+    background-color: var(--cor-fundo-5);
+}
+
+  /* Botões do header */
+  .btn-contato button {
+    width: 130px;
+    height: 50px;
+    border: 0;
+    cursor: pointer;
+    transition: 0.2s;
+    border-radius: 15px;
+  }
+  
+  /* Estilo do botão hamburguer */
+  .hamburger {
+    display: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    z-index: 9999;
+    width: 40px;
+    height: 30px;
+    position: relative;
+  }
+  
+  /* Estilo das barras do hambúrguer */
+  .hamburger span {
+    display: block;
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    border-radius: 9px;
+    transition: 0.25s ease-in-out;
+  }
+  
+  /* Barra superior */
+  .hamburger span:nth-of-type(1) {
+    top: 0;
+  }
+  
+  /* Barra central */
+  .hamburger span:nth-of-type(2) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  /* Barra inferior */
+  .hamburger span:nth-of-type(3) {
+    top: 100%;
+  }
+  
+  /* Quando o hambúrguer é ativado */
+  .hamburger input:checked ~ span:nth-of-type(1) {
+    transform: rotate(45deg);
+    top: 0;
+    left: 5px;
+  }
+  
+  .hamburger input:checked ~ span:nth-of-type(2) {
+    width: 0%;
+    opacity: 0;
+  }
+  
+  .hamburger input:checked ~ span:nth-of-type(3) {
+    transform: rotate(-45deg);
+    top: 28px;
+    left: 5px;
+  }
+  
+  /* Menu responsivo */
+  @media (max-width: 750px) {
+    header{
+      width: 100%;
+      padding: 40px 0%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: transparent; /* Adiciona cor de fundo ao header */
+      transition: 0.5s;
+      z-index: 9999; /* Garantir que o header esteja acima dos outros elementos */
+    }
+      
+  header.rolagem {
+    padding: 20px 0%;
+  }
+    .logo {
+      width: 120px;
+      position: relative;
+      cursor: pointer;
+      transition: 0.5s;
+      justify-content: center;
+      z-index: 9999; /* Garantir que o logo fique acima de outros elementos */
+      margin: 0;
+      padding: 0;
+    }
+
+    .flex {
+      width: 80%;
+
+    }
+  
+    /* Exibe o hambúrguer */
+    .hamburger {
+      display: block;
+    }
+  
+    /* Estilo do menu em telas pequenas */
+    .nav-list {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      clip-path: circle(100px at 90% -15%);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      opacity: 0;
+      pointer-events: none;
+      padding-top: 50px;
+      transition: 1s ease-out;
+    }
+    body.light-mode .nav-list {
+      background-color: var(--cor-fundo-3);
+    }
+    body.dark-mode .nav-list {
+      background-color: var(--cor-fundo-1);
+    }
+
+    body.light-mode .burger span {
+      background: var(--cor-fundo-1) !important;
+    }
+    .burger span {
+      display: block;
+      position: absolute;
+      height: 4px;
+      width: 100%;
+      background: #fff;
+      border-radius: 9px;
+      left: 0;
+      transition: 0.25s ease-in-out;
+    }
+    body.dark-mode .burger span {
+      background: var(--cor-fundo-5) !important;
+    }
+    /* Itens do menu */
+    .nav-list li {
+      display: block;
+      margin-bottom: 25px;
+    }
+  
+    /* Links do menu */
+    .nav-list Link {
+      font-size: 24px;
+      opacity: 0;
+      text-decoration: none;
+    }
+  
+    /* Transição do menu */
+    .nav.active .nav-list {
+      clip-path: circle(1500px at 90% -15%);
+      opacity: 1;
+      pointer-events: all;
+    }
+  
+    /* Links do menu quando ativos */
+    .nav.active .nav-list a {
+      opacity: 1;
+      transition: opacity 0.5s ease-in-out;
+    }
+  }
+  
