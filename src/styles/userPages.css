@@ -34,44 +34,80 @@
 
 html,
 body {
-    overflow: auto;
+    overflow-y: auto;
+    min-height: 100vh;
 }
 
-.master-container {
+.line {
+    margin-top: 2rem;
+    text-align: center; /* Alinha o conteúdo centralizado */
+    margin-bottom: 2rem; /* Espaço abaixo do bloco */
+  }
+  
+  .line h1 {
+    font-size: 2rem; /* Tamanho do título */
+    color: var(--cor-textos-1); /* Cor do título */
+    font-weight: 700; /* Deixa o texto mais forte */
+    margin-bottom: 0.5rem; /* Espaço abaixo do título */
+    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    margin: 0 auto;
-    padding: 1.5rem;
-    flex-wrap: wrap;
-}
+  }
+  
+  .line span {
+    display: block; /* Faz com que o span ocupe toda a largura */
+    width: 80%; /* Controla o comprimento da linha */
+    height: 2px; /* Espessura da linha */
+    background-color: var(--cor-botao-1); /* Cor da linha */
+    margin: 0 auto; /* Centraliza a linha */
+    transition: all 0.3s ease; /* Transição suave */
+  }
+  
+  .line span:hover {
+    background-color: var(--cor-botao-2); /* Cor da linha quando passar o mouse */
+  }
+  
 
-.master-painel {
-    display: grid;
-    grid-template-columns: 1fr;
-    /* Padrão: uma coluna */
-    gap: 20px;
-    padding: 20px;
-}
-
-/* @media (min-width: 768px) {
+@media (max-width: 768px) {
     .master-painel {
-      grid-template-columns: repeat(2, 1fr); 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
     }
-  } */
+    .line h1 {
+        font-size: 2rem; /* Tamanho do título */
+        color: var(--cor-textos-1); /* Cor do título */
+        font-weight: 700; /* Deixa o texto mais forte */
+        margin-bottom: 0.5rem; /* Espaço abaixo do título */
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0;
+      }
+}
 
 h1 {
     display: flex;
     align-items: center;
 }
 
-.qrcode-generation {
+/* .qrcode-generation {
     display: flex;
     justify-content: center;
     flex-direction: column;
     margin: 0 auto;
     gap: 1.5rem;
+} */
+
+.expiration-text{
+    text-align: center;
+    margin: 0 auto;
+    padding: 0.5rem;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .qrcode-placeholder {
@@ -85,11 +121,8 @@ h1 {
     filter: blur(10px) brightness(0.7);
     opacity: 0.6;
     pointer-events: none;
-    /* Evita interações */
 }
 
-
-/* 🛠 Ajuste do GRID para maior responsividade */
 .qrcode-generation-container {
     display: flex;
     align-items: center;
@@ -102,9 +135,18 @@ h1 {
     padding: 20px;
 }
 
+.only-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    gap: 1rem;
+    width: 100%;
+    font-size: 95%;
+}
 
 @media (max-width: 768px) {
-
     .qrcode-generation-container,
     .master-container,
     .calendar-container {
@@ -112,48 +154,27 @@ h1 {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 20px;
-        margin: 0 auto;
-        width: 80%;
+        width: 100%;
         font-size: 95%;
     }
-
-    .day-tile {
-        display: flex;
-        grid-template-areas:
-            "day week"
-            "subject subject"
-            "location location"
-            "time professor";
-        grid-template-columns: 1fr 1fr;
-        padding: 15px;
-        border-radius: 18px;
+    .expiration-text{
         text-align: center;
-        transition: background 0.3s;
-        position: relative;
-        max-width: 400px;
-        /* Define um limite máximo */
+        margin: 0 auto;
+        padding: 1.5rem 0 0 0;
+        flex-wrap: wrap;
+        flex-direction: column;
     }
-
     .calendar-container {
-        margin: 0 auto;
-        background-color: red;
-        width: 00px !important;
-        display: flex;
-        margin: 0 auto;
-        justify-content: center;
-    }
-
-    .calendar-header {
-        gap: 20px;
-    }
-
-    .arrow-button {
-        font-size: 16px !important;
-        width: 130px !important;
+        background-color: transparent;
+        width: 100% !important;
     }
 }
 
+@media (max-width: 480px) {
+    .qrcode-display {
+        width: 100%;
+    }
+}
 
 body.light-mode {
     background-color: var(--cor-fundo-5);
@@ -165,7 +186,6 @@ body.dark-mode {
     color: var(--cor-textos-3);
 }
 
-/* Botão de gerar QR Code */
 .generate-btn {
     border: none;
     padding: 12px 20px;
@@ -173,7 +193,6 @@ body.dark-mode {
     cursor: pointer;
     font-size: 16px;
     transition: background 0.3s, color 0.3s;
-    margin-top: 5rem;
 }
 
 .light-mode .generate-btn {
@@ -202,35 +221,10 @@ body.dark-mode {
     margin-bottom: 10px;
 }
 
-.light-mode .calendar-header button {
-    background: var(--cor-fundo-2);
-    color: var(--cor-textos-3);
-}
-
-.dark-mode .calendar-header button {
-    background: var(--cor-fundo-5);
-    color: var(--cor-textos-1);
-}
-
-.calendar-header button {
-    border: none;
-    padding: 8px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: 0.3s;
-}
-
-.calendar-header button:hover {
-    filter: brightness(1.2);
-}
-
-/* Dias da Semana */
 .week-view {
     display: flex;
     justify-content: center;
     gap: 10px;
-    max-width: 100%;
     flex-wrap: wrap;
 }
 
@@ -238,31 +232,9 @@ body.dark-mode {
     display: flex;
     justify-content: center;
     flex-direction: column;
+
     gap: 15px;
 }
-
-
-.light-mode .week-view span {
-    color: var(--cor-textos-1);
-}
-
-.dark-mode .week-view span {
-    color: var(--cor-textos-2);
-}
-
-.professor {
-    font-size: 19px;
-}
-
-.light-mode .professor {
-    color: var(--cor-textos-1);
-}
-
-.dark-mode .professor {
-    color: var(--cor-textos-2);
-}
-
-
 .day-tile {
     display: grid;
     grid-template-areas:
@@ -279,23 +251,46 @@ body.dark-mode {
     position: relative;
 }
 
+.day-contain {
+    display: grid;
+    grid-template-areas:
+        "day week"
+        "subject subject"
+        "location location"
+        "time professor";
+    grid-template-columns: 1fr 1fr;
+    padding: 12px;
+    border-radius: 18px;
+    text-align: center;
+    transition: background 0.3s;
+    position: relative;
+}
+
 .day-tile span {
     display: flex;
     justify-self: inherit;
-    font-size: 1.2em;
+    font-size: 1.1rem;
     justify-content: center;
     font-weight: bold;
     align-items: center;
 }
 
-.subject {
+body.light-mode .day-tile span{
+    color: var(--cor-textos-1);
+}
+
+body.dark-mode .day-tile span{
+    color: var(--cor-textos-3);
+}
+
+.day-tile strong {
     grid-area: subject;
     font-size: 1em;
     font-weight: bold;
-    text-align: left;
+    text-align: center;
 }
 
-.location {
+p.location {
     grid-area: location;
     font-size: 1em;
     font-weight: bold;
@@ -306,78 +301,254 @@ body.dark-mode {
     grid-area: time;
     font-size: 0.9em;
     text-align: center;
-    color: #555;
 }
 
 .professor {
     grid-area: professor;
     font-size: 0.8em;
-    text-align: left;
-    color: #777;
+    text-align: center;
 }
 
-
-/* Modo Claro */
-.light-mode .day-tile {
-    background: var(--cor-textos-3);
-    color: var(--cor-textos-1);
-
+html,
+body {
+    overflow: auto;
 }
 
-/* Modo Escuro */
-.dark-mode .day-tile {
-    background: var(--cor-fundo-1);
-    color: var(--cor-textos-3);
+.master-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 
-/* Dia Selecionado */
-.light-mode .day-tile.selected {
-    background: var(--cor-botao-3);
-    color: white;
+.master-painel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30%;
+    padding: 20px;
 }
 
-.dark-mode .day-tile.selected {
-    background: var(--cor-botao-2);
-    color: var(--cor-textos-4);
+@media (max-width: 768px) {
+    .master-painel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
 }
 
-/* Hover nos dias */
-.light-mode .day-tile:hover {
-    background: var(--cor-textos-2);
+h1 {
+    display: flex;
+    align-items: center;
 }
 
-.dark-mode .day-tile:hover {
-    background: var(--cor-textos-1);
+.qrcode-generation {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    gap: 1.5rem;
 }
 
-.qrcode-display {
+.qrcode-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.qrcode-blurred {
+    filter: blur(10px) brightness(0.7);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.qrcode-generation-container {
     display: flex;
     align-items: center;
     flex-direction: column;
-    border-radius: 8px;
-    ;
-    width: 100%;
-    max-width: 400px;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 1rem;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-.expiration-text {
-    font-size: 28px;
-    margin-top: 1rem;
-}
-
-/* Light Mode */
-.light-mode .qrcode-display {
-    background: var(--cor-fundo-4);
-}
-
-/* Dark Mode */
-.dark-mode .qrcode-display {
-    background: var(--cor-fundo-2);
-}
-
-/* Responsividade extra para QR Code */
-@media (max-width: 480px) {
-    .qrcode-display {
-        width: 100%;
+@media (max-width: 768px) {
+    .qrcode-generation-container,
+    .master-container,
+    .calendar-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 95%;
     }
+    
+    .calendar-container {
+        background-color: transparent;
+        gap: 2rem;
+    }
+
+    body.dark-mode  header.rolagem {
+        background-color: var(--cor-fundo-2)!important;
+      }
+      
+      body.light-mode header.rolagem {
+        background-color: var(--cor-textos-3)!important;
+      }
 }
+
+
+body.light-mode {
+    background-color: var(--cor-fundo-5);
+    color: var(--cor-textos-1);
+}
+
+body.dark-mode {
+    background-color: var(--cor-fundo-2) !important;
+    color: var(--cor-textos-3);
+}
+
+.generate-btn {
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s, color 0.3s;
+    margin: 2rem;
+}
+
+.light-mode .generate-btn {
+    background: var(--cor-fundo-2) !important;
+    color: var(--cor-textos-3);
+}
+
+.dark-mode .generate-btn {
+    background: var(--cor-fundo-4);
+    color: var(--cor-textos-1);
+}
+
+.generate-btn:hover {
+    filter: brightness(1.2);
+}
+
+.calendar-container {
+    text-align: center;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.week-view {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.week-grid {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+
+
+.arrow-button {
+    font-size: 16px !important;
+    width: 130px !important;
+    border-radius: 18px;
+    margin: 0.1em;
+    padding: 16px 8px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.light-mode .arrow-button {
+    background: var(--cor-fundo-2) !important;
+    color: var(--cor-textos-3);
+}
+
+.dark-mode .arrow-button {
+    background: var(--cor-fundo-4);
+    color: var(--cor-textos-1);
+}
+
+
+.light-mode .empty-photo {
+    background: var(--cor-fundo-4)!important;
+    color: var(--cor-textos-1)!important;
+  }
+  
+  /* Modo Escuro */
+  .dark-mode .empty-photo{
+    background: var(--cor-fundo-2)!important;
+    color: var(--cor-textos-3)!important;
+  }
+  
+  .light-mode .empty-card {
+    background: var(--cor-textos-3)!important;
+    color: var(--cor-textos-1)!important;
+    box-shadow: 3px 3px var(--cor-textos-4);
+  
+  }
+  
+  /* Modo Escuro */
+  .dark-mode .empty-card{
+    background: var(--cor-fundo-1)!important;
+    color: var(--cor-textos-3)!important;
+  }
+  
+  /* Modo Claro */
+  .light-mode .day-tile {
+    background: var(--cor-textos-3);
+    color: var(--cor-textos-1);
+  
+  }
+  
+  /* Modo Escuro */
+  .dark-mode .day-tile {
+    background: var(--cor-fundo-1);
+    color: var(--cor-textos-3);
+  }
+  
+  .light-mode .day-tile.selected {
+    background: var(--cor-fundo-1);
+    color: var(--cor-textos-4);
+    border: 3px solid var(--cor-textos-2);
+  }
+  
+  .dark-mode .day-tile.selected {
+    background: var(--cor-textos-4);
+    color: var(--cor-textos-1);
+    border: 3px solid var(--cor-textos-1);
+  }
+
+  .light-mode .day-tile.selected span {
+    color: var(--cor-botao-3);
+  }
+  
+  .dark-mode .day-tile.selected span {
+    color: var(--cor-botao-1);
+  }
+  
+  /* Hover nos dias */
+  .light-mode .day-tile:hover {
+    background: var(--cor-textos-1);
+  }
+  
+  .dark-mode .day-tile:hover {
+    background: var(--cor-textos-2);
+  }

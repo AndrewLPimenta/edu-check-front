@@ -39,7 +39,7 @@ const QRCodeComponent = ({ selectedDate }) => {
     };
 
     return (
-        <div className="qrcode-generation">
+        <div >
             <button className="generate-btn" onClick={generateQRCode}>
                 Gerar QR Code
             </button>

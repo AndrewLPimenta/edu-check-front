@@ -87,7 +87,7 @@ const Header = () => {
     const handleScroll = () => {
       const header = document.querySelector("#header");
       if (header) {
-        header.classList.toggle("rolagem", window.scrollY > 100);
+        header.classList.toggle("rolagem", window.scrollY > 500);
       }
     };
 

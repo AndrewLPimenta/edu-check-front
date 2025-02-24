@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import CustomCalendar from "../components/CustomCalendar";
 import QRCodeComponent from "../components/QrCodeComponent";
+import Presents from "../components/Presents";
 import "../styles/userPages.css";
 
 const GenerateQRCode = () => {
@@ -10,19 +11,25 @@ const GenerateQRCode = () => {
     useEffect(() => {
         setSelectedDate(new Date());
     }, []);
+const [studentsList, setStudentsList] = useState([]);
 
     return (
-        <div className="qrcode-generation-container">
+        <div >
             <Header />
+            <div className="line">
             <h1>Área do Professor</h1>
+            <span></span>
+            </div>
             <div className="master-container">
                 <div className="master-painel">
                     <div className="calendar-container">
                         <h2>Semana Atual</h2>
                         <CustomCalendar selectedDate={selectedDate} onDateChange={setSelectedDate} />
                     </div>
-                    {/* Aqui está o componente de QR Code */}
+                    <div className="only-container">
                     <QRCodeComponent selectedDate={selectedDate} />
+                    <Presents students={studentsList} />
+                    </div>
                 </div>
             </div>
         </div>

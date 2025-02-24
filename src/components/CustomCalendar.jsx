@@ -2,17 +2,17 @@ import React, { useState, useEffect } from "react";
 import "../styles/userPages.css";
 
 const classSchedule = {
-  1: [{ disciplina: "Programação Front-End", horario: "19:00", professor: "Débora Amorim ", local: "Campus UniFOA" }],
-  2: [{ disciplina: "Programação Front-End", horario: "19:00", professor: "Bruno Correa", local: "Campus UniFOA" }],
+  1: [{ disciplina: " Front-End", horario: "19:00", professor: "Débora Amorim ", local: "Campus UniFOA" }],
+  2: [{ disciplina: " Front-End", horario: "19:00", professor: "Bruno Correa", local: "Campus UniFOA" }],
   3: [
-    { disciplina: "Programação Front-End", horario: "18:45", professor: "Luciane Carvalho ", local: "Sala Virtual" }
+    { disciplina: "Front-End", horario: "18:45", professor: "Luciane Carvalho ", local: "Sala Virtual" }
 
   ],
   4: [
     
-    { disciplina: "Programação Front-End", horario: "19:00", professor: "Rafael Iacillo", local: "Campus UniFOA" }
+    { disciplina: "Front-End", horario: "19:00", professor: "Rafael Iacillo", local: "Campus UniFOA" }
   ],
-  5: [{ disciplina: "Programação Front-End", horario: "19:00", professor: "Rafael Iacillo", local: "Campus UniFOA" }]
+  5: [{ disciplina: " Front-End", horario: "19:00", professor: "Rafael Iacillo", local: "Campus UniFOA" }]
 };
 
 const CustomCalendar = ({ selectedDate, onDateChange }) => {
@@ -72,7 +72,7 @@ const CustomCalendar = ({ selectedDate, onDateChange }) => {
                 
               <span  >{date.toLocaleDateString("pt-BR", { weekday: "long", day: "numeric" })}</span>
               {classSchedule[dayNumber]?.map((aula, index) => (
-                <div key={index} className="day-tile">
+                <div key={index} className=".day-contain">
                 <strong className="subject">{aula.disciplina}</strong>
                 <p className="location">{aula.local}</p>
                 <p className="time">{aula.horario}</p>

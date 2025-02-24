@@ -18,6 +18,12 @@
     --cor-botao-3: #90e0ef;  /* Azul muito claro (hover ou borda) */
 }
 
+html,
+body {
+    overflow-y: auto;
+    min-height: 100vh;
+}
+
 
 
 /* Modo Claro */
@@ -514,7 +520,14 @@ body.dark-mode   .btn-contato button {
       transition: 0.5s;
       z-index: 9999; /* Garantir que o header esteja acima dos outros elementos */
     }
-      
+    body.dark-mode  header.rolagem {
+      background-color: var(--cor-fundo-2)!important;
+    }
+    
+    body.light-mode header.rolagem {
+      background-color: var(--cor-textos-3)!important;
+    }
+    
   header.rolagem {
     padding: 10px 0%;
   }
