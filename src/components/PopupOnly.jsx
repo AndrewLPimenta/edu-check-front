@@ -1,12 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/modal.css";
 
 const PopupOnly = ({ onClose }) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
   useEffect(() => {
     function handleFocus(event) {
       setTimeout(() => {
         event.target.scrollIntoView({ behavior: "smooth", block: "center" });
-      }, 200); // Delay reduzido para suavizar a transição
+      }, 200);
     }
 
     const inputs = document.querySelectorAll("input, textarea");
@@ -17,39 +21,56 @@ const PopupOnly = ({ onClose }) => {
     };
   }, []);
 
+  const handleLogin = () => {
+    if (!username || !password) {
+      setError("Preencha todos os campos.");
+      return;
+    }
+
+    setError("");
+    console.log("Login enviado: ", { username, password });
+    // Aqui chamaremos a API futuramente
+  };
+
   return (
     <div className="popup show">
       <div className="popup-content animate">
         <button className="close-icon" onClick={onClose}>✖</button>
         <h2>Login Aluno</h2>
 
-        <div className="inputGroup">
-          <input 
-            className="input-group" 
-            type="number" 
-            id="matricula" 
-            required 
-            autoComplete="off" 
-            placeholder=" " 
-          />
-          <label htmlFor="matricula">Matrícula</label>
-        </div>
+        {error && <p className="error-message">{error}</p>}
 
         <div className="inputGroup">
           <input 
             className="input-group" 
             type="text" 
-            id="nome"  // Corrigido ID duplicado
+            id="username" 
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             required 
             autoComplete="off" 
             placeholder=" " 
           />
-          <label htmlFor="nome">Nome</label>
+          <label htmlFor="username">Nome de Usuário</label>
         </div>
-    <div className="button-div">
 
-        <button className="only-loguin">Entrar</button>
-    </div>
+        <div className="inputGroup">
+          <input 
+            className="input-group" 
+            type="password" 
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required 
+            autoComplete="off" 
+            placeholder=" " 
+          />
+          <label htmlFor="password">Senha</label>
+        </div>
+    
+        <div className="button-div">
+          <button className="only-loguin" onClick={handleLogin}>Entrar</button>
+        </div>
       </div>
     </div>
   );

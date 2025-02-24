@@ -11,7 +11,7 @@ const Dashboard = () => {
 
     const handleSelection = (type) => {
         setShowWelcome(false); // Esconde o Welcome
-        setPopup(type); // Mostra o popup escolhido
+        setPopup(type); 
     };
     const handleClose = () => {
         setPopup(null); // Fecha qualquer popup

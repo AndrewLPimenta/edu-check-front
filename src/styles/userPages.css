@@ -1,0 +1,383 @@
+:root {
+
+    /* Cores de texto */
+    --cor-textos-1: #003f5c;
+    /* Azul escuro */
+    --cor-textos-2: #58a6ff;
+    /* Azul claro */
+    --cor-textos-3: #c0d6e4;
+    /* Azul pálido */
+    --cor-textos-4: #ffffff;
+    /* Branco */
+
+    /* Cores de fundo */
+    --cor-fundo-1: #0d1b2a;
+    /* Fundo escuro */
+    --cor-fundo-2: #06080d;
+    /* Azul escuro (modo escuro) */
+    --cor-fundo-3: #ffffff;
+    /* Fundo claro */
+    --cor-fundo-4: #e6f1ff;
+    /* Azul claro (modo claro) */
+    --cor-fundo-5: #f5fafd;
+    /* Fundo suave */
+
+    /* Botão e ícones */
+    --cor-botao-1: #0077b6;
+    /* Azul vibrante */
+    --cor-botao-2: #00b4d8;
+    /* Azul mais claro */
+    --cor-botao-3: #90e0ef;
+    /* Azul muito claro (hover) */
+
+}
+
+html,
+body {
+    overflow: auto;
+}
+
+.master-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    padding: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.master-painel {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Padrão: uma coluna */
+    gap: 20px;
+    padding: 20px;
+}
+
+/* @media (min-width: 768px) {
+    .master-painel {
+      grid-template-columns: repeat(2, 1fr); 
+    }
+  } */
+
+h1 {
+    display: flex;
+    align-items: center;
+}
+
+.qrcode-generation {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    gap: 1.5rem;
+}
+
+.qrcode-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.qrcode-blurred {
+    filter: blur(10px) brightness(0.7);
+    opacity: 0.6;
+    pointer-events: none;
+    /* Evita interações */
+}
+
+
+/* 🛠 Ajuste do GRID para maior responsividade */
+.qrcode-generation-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 1rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+@media (max-width: 768px) {
+
+    .qrcode-generation-container,
+    .master-container,
+    .calendar-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        margin: 0 auto;
+        width: 80%;
+        font-size: 95%;
+    }
+
+    .day-tile {
+        display: flex;
+        grid-template-areas:
+            "day week"
+            "subject subject"
+            "location location"
+            "time professor";
+        grid-template-columns: 1fr 1fr;
+        padding: 15px;
+        border-radius: 18px;
+        text-align: center;
+        transition: background 0.3s;
+        position: relative;
+        max-width: 400px;
+        /* Define um limite máximo */
+    }
+
+    .calendar-container {
+        margin: 0 auto;
+        background-color: red;
+        width: 00px !important;
+        display: flex;
+        margin: 0 auto;
+        justify-content: center;
+    }
+
+    .calendar-header {
+        gap: 20px;
+    }
+
+    .arrow-button {
+        font-size: 16px !important;
+        width: 130px !important;
+    }
+}
+
+
+body.light-mode {
+    background-color: var(--cor-fundo-5);
+    color: var(--cor-textos-1);
+}
+
+body.dark-mode {
+    background-color: var(--cor-fundo-2) !important;
+    color: var(--cor-textos-3);
+}
+
+/* Botão de gerar QR Code */
+.generate-btn {
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s, color 0.3s;
+    margin-top: 5rem;
+}
+
+.light-mode .generate-btn {
+    background: var(--cor-fundo-2) !important;
+    color: var(--cor-textos-3);
+}
+
+.dark-mode .generate-btn {
+    background: var(--cor-fundo-4);
+    color: var(--cor-textos-1);
+}
+
+.generate-btn:hover {
+    filter: brightness(1.2);
+}
+
+.calendar-container {
+    text-align: center;
+    width: 100%;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.light-mode .calendar-header button {
+    background: var(--cor-fundo-2);
+    color: var(--cor-textos-3);
+}
+
+.dark-mode .calendar-header button {
+    background: var(--cor-fundo-5);
+    color: var(--cor-textos-1);
+}
+
+.calendar-header button {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.calendar-header button:hover {
+    filter: brightness(1.2);
+}
+
+/* Dias da Semana */
+.week-view {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    max-width: 100%;
+    flex-wrap: wrap;
+}
+
+.week-grid {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+.light-mode .week-view span {
+    color: var(--cor-textos-1);
+}
+
+.dark-mode .week-view span {
+    color: var(--cor-textos-2);
+}
+
+.professor {
+    font-size: 19px;
+}
+
+.light-mode .professor {
+    color: var(--cor-textos-1);
+}
+
+.dark-mode .professor {
+    color: var(--cor-textos-2);
+}
+
+
+.day-tile {
+    display: grid;
+    grid-template-areas:
+        "day week"
+        "subject subject"
+        "location location"
+        "time professor";
+    grid-template-columns: 1fr 1fr;
+    padding: 12px;
+    border-radius: 18px;
+    text-align: center;
+    min-width: 150px;
+    transition: background 0.3s;
+    position: relative;
+}
+
+.day-tile span {
+    display: flex;
+    justify-self: inherit;
+    font-size: 1.2em;
+    justify-content: center;
+    font-weight: bold;
+    align-items: center;
+}
+
+.subject {
+    grid-area: subject;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: left;
+}
+
+.location {
+    grid-area: location;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.time {
+    grid-area: time;
+    font-size: 0.9em;
+    text-align: center;
+    color: #555;
+}
+
+.professor {
+    grid-area: professor;
+    font-size: 0.8em;
+    text-align: left;
+    color: #777;
+}
+
+
+/* Modo Claro */
+.light-mode .day-tile {
+    background: var(--cor-textos-3);
+    color: var(--cor-textos-1);
+
+}
+
+/* Modo Escuro */
+.dark-mode .day-tile {
+    background: var(--cor-fundo-1);
+    color: var(--cor-textos-3);
+}
+
+/* Dia Selecionado */
+.light-mode .day-tile.selected {
+    background: var(--cor-botao-3);
+    color: white;
+}
+
+.dark-mode .day-tile.selected {
+    background: var(--cor-botao-2);
+    color: var(--cor-textos-4);
+}
+
+/* Hover nos dias */
+.light-mode .day-tile:hover {
+    background: var(--cor-textos-2);
+}
+
+.dark-mode .day-tile:hover {
+    background: var(--cor-textos-1);
+}
+
+.qrcode-display {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 8px;
+    ;
+    width: 100%;
+    max-width: 400px;
+}
+
+.expiration-text {
+    font-size: 28px;
+    margin-top: 1rem;
+}
+
+/* Light Mode */
+.light-mode .qrcode-display {
+    background: var(--cor-fundo-4);
+}
+
+/* Dark Mode */
+.dark-mode .qrcode-display {
+    background: var(--cor-fundo-2);
+}
+
+/* Responsividade extra para QR Code */
+@media (max-width: 480px) {
+    .qrcode-display {
+        width: 100%;
+    }
+}

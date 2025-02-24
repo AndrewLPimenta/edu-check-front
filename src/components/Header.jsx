@@ -6,7 +6,6 @@ import logoLight from "../assets/logo-light-educheck.png";  // Logo modo claro
 import logoDark from "../assets/logo-dark-educheck.png";    // Logo modo escuro
 import Button from "./Button";
 
-import "../styles/global.css";
 const Header = () => {
   const [menuActive, setMenuActive] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
@@ -84,6 +83,21 @@ const Header = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const header = document.querySelector("#header");
+      if (header) {
+        header.classList.toggle("rolagem", window.scrollY > 100);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <header id="header">
@@ -100,13 +114,13 @@ const Header = () => {
                   <Link className="links-nav" to="/Information">Sobre</Link>
                 </li>
                 <li>
-                  <Link className="links-nav" to="/Portifolio">Home</Link>
+                  <Link className="links-nav" to="/">Home</Link>
                 </li>
                 <li>
                   <Link className="links-nav" to="/Network">Marcar Presença</Link>
                 </li>
                 <li>
-                  <Link className="links-nav" to="/Network">Gerar QR Code</Link>
+                  <Link className="links-nav" to="/GenerateQRCode">Gerar QR Code</Link> {/* Corrigido */}
                 </li>
                 <li>
                   <Link className="links-nav" to="/Network">Alunos Presentes</Link>
@@ -122,7 +136,7 @@ const Header = () => {
                 {!isAuthenticated ? (
                   <li className="btn-contato">
                     <Link to="/contato">
-                      <Button ></Button>
+                      <Button></Button>
                     </Link>
                   </li>
                 ) : (

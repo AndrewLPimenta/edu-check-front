@@ -18,6 +18,8 @@
     --cor-botao-3: #90e0ef;  /* Azul muito claro (hover ou borda) */
 }
 
+
+
 /* Modo Claro */
 body.light-mode {
     background-color: var(--cor-fundo-3);
@@ -55,17 +57,44 @@ body.dark-mode {
   transform: translateX(-50%);
 }
 
-/*  Modo Escuro */
+@media (max-width: 768px) {
+  .nav-list a::after {
+    width: 0 !important;
+    transition: none !important;
+  }
+}
+
+div.links {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  gap: 9rem;
+  padding: 2rem;
+  font-weight: 800;
+  z-index: 10;
+  justify-content: center;
+  animation: slideIn ease 1.5s forwards;
+}
 
 body.dark-mode .nav-list a {
   color: var(--cor-textos-3); 
 }
 
-body.light-mode .nav-list a {
+body.light-mode  .nav-list a {
   color: var(--cor-textos-1) !important; 
 }
 
+body.dark-mode  header.rolagem {
+  background-color: var(--cor-fundo-2)!important;
+}
 
+body.light-mode header.rolagem {
+  background-color: var(--cor-textos-3)!important;
+}
 
 body.dark-mode .nav-list a::after {
   background-color: var(--cor-textos-3); /* 🔥 Cor no modo escuro */
@@ -89,9 +118,6 @@ body.dark-mode  .nav-list a:hover {
   color: var(--cor-textos-2); /* 🔥 Mudar cor do texto no hover */
 }
 
-
-
-
 /*  Estilização base do botão */
 .animated-button {
   position: relative;
@@ -99,7 +125,6 @@ body.dark-mode  .nav-list a:hover {
   align-items: center;
   gap: 4px;
   padding: 16px 36px;
-
   font-size: 16px;
   background-color: rgba(8, 8, 8, 0.2) !important; /* 🔹 Cor semi-transparente */
 backdrop-filter: blur(10px); /* 🔹 Efeito de desfoque */
@@ -312,7 +337,7 @@ body.dark-mode .animated-button .circle {
   /* Estilo do header fixo */
   header{
     width: 100%;
-    padding: 50px 4%;
+    padding: 20px 4%;
     position: fixed;
     top: 0;
     left: 0;
@@ -384,17 +409,17 @@ body.dark-mode .animated-button .circle {
   }
   
   header.rolagem {
-    padding: 20px 4%;
+    padding: 10px 4%;
   }
 
   /* Modo Claro */
 body.light-mode header.rolagem {
-    padding: 30px 4%; /* Padding maior no modo escuro */
+    padding: 10px 4%; /* Padding maior no modo escuro */
 }
 
 /* Modo Escuro */
 body.dark-mode header.rolagem {
-  padding: 30px 4%; /* Padding maior no modo escuro */
+  padding: 10px 4%; /* Padding maior no modo escuro */
   background-color: var(--cor-fundo-1);
 }
 
@@ -475,21 +500,32 @@ body.dark-mode   .btn-contato button {
     left: 5px;
   }
   
+
+
+
   /* Menu responsivo */
   @media (max-width: 750px) {
     header{
       width: 100%;
-      padding: 40px 0%;
+      padding: 10px 0%;
       position: fixed;
       top: 0;
       left: 0;
-      background-color: transparent; /* Adiciona cor de fundo ao header */
       transition: 0.5s;
       z-index: 9999; /* Garantir que o header esteja acima dos outros elementos */
     }
       
   header.rolagem {
-    padding: 20px 0%;
+    padding: 10px 0%;
+  }
+  body.dark-mode  header.rolagem {
+    background-color: var(--cor-fundo-2)!important;
+    transition: background-color 0.3s ease;
+  }
+  
+  body.light-mode header.rolagem {
+    background-color: var(--cor-textos-3)!important;
+    transition: background-color 0.3s ease;
   }
     .logo {
       width: 120px;
