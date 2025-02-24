@@ -114,21 +114,20 @@ const Header = () => {
                   <Link className="links-nav" to="/Information">Sobre</Link>
                 </li>
                 <li>
+                  <Link className="links-nav" to="/MasterPage">Area do Professor</Link> {/* Corrigido */}
+                </li>
+                <li>
                   <Link className="links-nav" to="/">Home</Link>
                 </li>
                 <li>
-                  <Link className="links-nav" to="/Network">Marcar Presença</Link>
+                  <Link className="links-nav" to="/OnlyPage">Area do Aluno</Link>
                 </li>
                 <li>
-                  <Link className="links-nav" to="/GenerateQRCode">Gerar QR Code</Link> {/* Corrigido */}
+                  <Link className="links-nav" to="/ListOnly">Presentes</Link>
                 </li>
                 <li>
-                  <Link className="links-nav" to="/Network">Alunos Presentes</Link>
+                  <Link className="links-nav" to="/SupportPage">Suporte</Link>
                 </li>
-                <li>
-                  <Link className="links-nav" to="/Network">Suporte</Link>
-                </li>
-
                 {/* Componente ThemeToggle */}
                 <ThemeToggle setTheme={setTheme} />
 
