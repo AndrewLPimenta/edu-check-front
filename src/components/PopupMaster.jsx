@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Button from "./Button";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; 
 import { useNavigate } from "react-router-dom"; // Importa para redirecionamento
 import "../styles/modal.css";
@@ -34,7 +35,7 @@ const PopupMaster = ({ onClose }) => {
       setLoading(false);
       
       if (password === "senhaCorreta123") { // Substitua por uma validação real do back-end
-        navigate("/GenerateQRCode"); // Redireciona para a página QRCodeGenerator
+        navigate("/MasterPage"); // Redireciona para a página QRCodeGenerator
       } else {
         setMessage("Senha incorreta! Tente novamente.");
       }
@@ -72,13 +73,12 @@ const PopupMaster = ({ onClose }) => {
         {message && <p className="validation-message">{message}</p>}
 
         <div className="button-div">
-          <button 
-            className="master-loguin" 
+          <Button 
             onClick={handleLogin} 
             disabled={loading}
-          >
+            >
             {loading ? "Validando..." : "Entrar"}
-          </button>
+          </Button>
         </div>
       </div>
     </div>

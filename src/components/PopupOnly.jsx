@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles/modal.css";
-
+import Button from "./Button";
 const PopupOnly = ({ onClose }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -31,6 +31,7 @@ const PopupOnly = ({ onClose }) => {
     console.log("Login enviado: ", { username, password });
     // Aqui chamaremos a API futuramente
   };
+  
 
   return (
     <div className="popup show">
@@ -69,7 +70,7 @@ const PopupOnly = ({ onClose }) => {
         </div>
     
         <div className="button-div">
-          <button className="only-loguin" onClick={handleLogin}>Entrar</button>
+          <Button className="only-loguin" onClick={handleLogin}>Entrar</Button>
         </div>
       </div>
     </div>

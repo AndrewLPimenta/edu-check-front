@@ -111,7 +111,7 @@ const Header = () => {
             <div className={`nav ${menuActive ? "active" : ""}`}>
               <ul className="nav-list">
                 <li>
-                  <Link className="links-nav" to="/Information">Sobre</Link>
+                  <Link className="links-nav" to="/Profile">Perfil</Link>
                 </li>
                 <li>
                   <Link className="links-nav" to="/MasterPage">Area do Professor</Link> {/* Corrigido */}

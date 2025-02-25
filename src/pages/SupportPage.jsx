@@ -161,10 +161,6 @@ export default function ChatBot() {
   return (
     <main>
       <Header />
-      <div className="linha">
-        <h1>Suporte</h1>
-        <span></span>
-      </div>
 
       <div className="chat-container">
         <div className="chat-box">
