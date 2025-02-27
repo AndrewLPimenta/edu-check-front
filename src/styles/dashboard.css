@@ -1,5 +1,6 @@
 /* Define a imagem padrão (escura) */
 body {
+  overflow: hidden;
     --background-image: url('../assets/background-dm-desktop.png'); /* Tema escuro por padrão */
   }
   
