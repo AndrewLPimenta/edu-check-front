@@ -1,5 +1,6 @@
 import React from 'react';
-import ".././styles/userPages.css";
+import "../styles/componentsUnity.css";
+
 const Presents = ({ students = [{ id: 1, name: 'Ninguém', registration: '000000', photo: 'https://via.placeholder.com/50' }] }) => {
   return (
     <div>

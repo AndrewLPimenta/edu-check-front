@@ -1,0 +1,261 @@
+:root {
+
+    /* Cores de texto */
+    --cor-textos-1: #003f5c;
+    /* Azul escuro */
+    --cor-textos-2: #58a6ff;
+    /* Azul claro */
+    --cor-textos-3: #c0d6e4;
+    /* Azul pálido */
+    --cor-textos-4: #ffffff;
+    /* Branco */
+
+    /* Cores de fundo */
+    --cor-fundo-1: #0d1b2a;
+    /* Fundo escuro */
+    --cor-fundo-2: #06080d;
+    /* Azul escuro (modo escuro) */
+    --cor-fundo-3: #ffffff;
+    /* Fundo claro */
+    --cor-fundo-4: #e6f1ff;
+    /* Azul claro (modo claro) */
+    --cor-fundo-5: #f5fafd;
+    /* Fundo suave */
+
+    /* Botão e ícones */
+    --cor-botao-1: #0077b6;
+    /* Azul vibrante */
+    --cor-botao-2: #00b4d8;
+    /* Azul mais claro */
+    --cor-botao-3: #90e0ef;
+    /* Azul muito claro (hover) */
+    --sombra-clara: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    --sombra-escura: 0px 4px 15px rgba(0, 0, 0, 0.5);
+
+}
+
+.qrcode-display {
+    border-radius: 16px;
+
+}
+
+.qrcode-display-scaner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: transparent;
+    border-radius: 16px;
+}
+
+
+body.light-mode .qrcode-display, .qrcode-display-scaner {
+    border: 2px solid var(--cor-fundo-1);
+    box-shadow: 1px 1px 20px var(--cor-fundo-1);
+  }
+  
+  body.dark-mode .qrcode-display, .qrcode-display-scaner {
+
+    border: 2px solid var(--cor-botao-1);
+    box-shadow: 1px 1px 20px var(--cor-botao-1);
+
+  }
+
+.qrcode-container-scaner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    height: 100%;
+}
+
+.qrcode-placeholder-scaner {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    padding: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .qrcode-placeholder-scaner {
+        height: 200px;
+    }
+}
+
+.qrcode-black-bg-scaner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#reader {
+    position: relative;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#reader__scan_region {
+    width: 100%;
+    min-height: 100px;
+    text-align: center;
+}
+
+.qrcode-placeholder-scaner img {
+    opacity: 0.8;
+}
+
+.qrcode-placeholder-scaner img[alt="Camera based scan"] {
+    opacity: 0.6;
+    max-width: 64px;
+    max-height: 64px;
+}
+
+
+.qrcode-result {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.expiration-text {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.qrcode-result a {
+    color: #007bff;
+    text-decoration: none;
+    word-wrap: break-word;
+}
+
+/* Botão */
+.link-edit {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.link-edit button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.link-edit button:hover {
+    background-color: #0056b3;
+}
+/* 
+
+body.dark-mode .qrcode-placeholder-scaner {
+    background-color: #121212; 
+    border: 1px solid #333;   
+}
+
+body.dark-mode #reader {
+    border: 1px solid #555; 
+
+body.dark-mode .qrcode-placeholder img {
+    opacity: 0.9;
+}
+
+
+body.dark-mode .link-edit button {
+    background-color: #1a73e8; 
+
+body.dark-mode .qrcode-result a {
+    color: #64b5f6; 
+}
+
+
+body.light-mode .qrcode-placeholder {
+    background-color: #ada7a7; 
+    border: 1px solid #ccc;
+
+body.light-mode #reader {
+    border: 1px solid #ddd; 
+}
+
+body.light-mode .qrcode-placeholder img {
+    opacity: 0.8;
+}
+
+
+body.light-mode .link-edit button {
+    background-color: #007bff; 
+}
+
+body.light-mode .qrcode-result a {
+    color: #007bff; 
+}
+
+
+#reader div {
+    font-family: Arial, sans-serif;
+    font-size: 10pt;
+    text-align: center;
+}
+
+#reader div a {
+    color: #fff;
+    text-decoration: none;
+}
+
+body.dark-mode #reader div {
+    color: #ddd; 
+}
+
+body.dark-mode #reader div a {
+    color: #bbb;
+}
+
+body.light-mode #reader div {
+    color: #333; 
+
+body.light-mode #reader div a {
+    color: #555; 
+body.dark-mode .qrcode-placeholder div,
+body.light-mode .qrcode-placeholder div {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    display: block;
+    padding: 5pt;
+    background: rgba(0, 0, 0, 0.69);
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 400;
+    color: white;
+}
+
+body.dark-mode .qrcode-placeholder img {
+    opacity: 0.6;
+}
+
+body.dark-mode .qrcode-placeholder img[alt="Info icon"] {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 16px;
+    height: 16px;
+    opacity: 0.6;
+    cursor: pointer;
+    z-index: 2;
+}
+
+body.light-mode .qrcode-placeholder div {
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
+} */

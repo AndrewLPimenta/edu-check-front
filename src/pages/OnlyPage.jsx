@@ -5,6 +5,7 @@ import CommentBox from "../components/CommentBox";
 import Footer from "../components/Footer";
 import Climax from "../components/Climax";
 import { useLoader } from "../context/LoaderContext"; 
+import QRCodeScanner from "../components/QRCodeScanner";
 import "../styles/userPages.css";
 
 const OnlyPage = ({ 
@@ -12,6 +13,8 @@ const OnlyPage = ({
 }) => {
   const [profilePhoto, setProfilePhoto] = useState(student.photo);
   const { setLoading } = useLoader();
+  const [scanning, setScanning] = useState(false);  // Controle do estado do scanner
+  const [scanResult, setScanResult] = useState(null); 
 
   useEffect(() => {
     setLoading(true); 
@@ -25,6 +28,10 @@ const OnlyPage = ({
       reader.onloadend = () => setProfilePhoto(reader.result);
       reader.readAsDataURL(file);
     }
+  };
+
+  const handleScannerButtonClick = () => {
+    setScanning(true); // Habilita o scanner
   };
 
   return (
@@ -58,14 +65,18 @@ const OnlyPage = ({
           <div className="only-div">
             <div className="only-div-children">
               <div className="qrcode-scanner">
-                <p className="expiration-text">Abrir</p>
+                <p className="expiration-text">Área de Leitura do QR Code</p>
               </div>
-              <div className="qrcode-display qrcode-placeholder">
-                <div className="qrcode-blurred" />
-                <p className="expiration-text">Expira em...</p>
-              </div>
+
+              {/* A caixa do scanner estará visível quando 'scanning' for true */}
+              <QRCodeScanner scanning={scanning} setScanResult={setScanResult} />
+
+              {/* O botão agora só abre a câmera e inicia o scanner */}
               <div className="link-edit">
-                <Button textButton="Ler Código QR" />
+                <Button
+                  onClick={handleScannerButtonClick}  // Ativa o scanner ao clicar no botão
+                  textButton="Abrir Câmera"
+                />
               </div>
             </div>
 

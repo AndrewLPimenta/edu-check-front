@@ -28,7 +28,7 @@ const Dashboard = () => {
     }, [setLoading]);
 
     return (
-        <main className={`dashboard ${isNavigating ? "blurred" : ""}`}>
+        <main style={{ overflow: "hidden", height: "100vh" }} className={`dashboard ${isNavigating ? "blurred" : ""}`}>
             <div className={`main ${isNavigating ? "blurred" : ""}`}>   
                 <Header />
                 {showPopup && popup === null && <PopupWellcome onSelect={handleSelection} />} 

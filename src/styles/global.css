@@ -18,9 +18,12 @@
     --cor-botao-3: #90e0ef;  /* Azul muito claro (hover ou borda) */
 }
 
+
+
 html,
 body {
     overflow-y: auto;
+    overflow-x: hidden;
     min-height: 100vh;
 }
 

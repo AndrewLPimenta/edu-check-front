@@ -17,6 +17,19 @@ export default function ListOnly() {
         <div>
             <Header />
             <Presents />
+            <Presents />
+            <Presents />
+            <Presents />
+            <Presents />
+            <Presents />
+            <Presents />
+            <Presents />
+            <Presents />
+            <Presents />
+            <Presents />
+            <Presents />
+            <Presents />
+            <Presents />
             <Footer />
         </div>
     );

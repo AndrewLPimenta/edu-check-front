@@ -19,7 +19,7 @@ export default function Footer() {
             </div>
             <div className='footer-itemns'>
                 <h3>Política de Privacidade</h3>
-                <p>Nós valorizamos a sua privacidade e estamos comprometidos em proteger suas informações pessoais. Esta política descreve como coletamos, usamos e protegemos seus dados. Ao usar nosso site, você concorda com as práticas descritas nesta política.</p>
+                <p>Nós valorizamos a sua privacidade e estamos comprometidos em proteger suas informações pessoais. </p>
                 <ul>
                     <li><Link to="/">Leia nossa Política de Privacidade completa</Link></li>
                 </ul>

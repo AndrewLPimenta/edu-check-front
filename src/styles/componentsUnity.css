@@ -557,13 +557,13 @@ body.dark-mode .footer-container a {
 }
 
 .footer-container {
+  font-size: 1.5vh;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   height: 40vh;
-  gap: 1rem;
-  width: 100%;
   padding: 1.5rem;
-  margin-top: 1.5rem;
+  margin-top: 1.8rem;
+
 }
 
 /* Aumentar o tamanho */
@@ -571,7 +571,7 @@ body.dark-mode .footer-container a {
   text-align: center;
   align-items: center;
   justify-content: center;
-  width: 33, 3%;
+  width: 33%, 33%, 33%;
 }
 
 .div-social {
