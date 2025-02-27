@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import CustomCalendar from "../components/CustomCalendar";
 import QRCodeComponent from "../components/QrCodeComponent";
 import Presents from "../components/Presents";
+import Footer from "../components/Footer";
 import "../styles/userPages.css";
 
 const GenerateQRCode = () => {
@@ -14,7 +15,7 @@ const GenerateQRCode = () => {
 const [studentsList, setStudentsList] = useState([]);
 
     return (
-        <div >
+        <main>
             <Header />
             <div className="line">
             <h1>Área do Professor</h1>
@@ -32,7 +33,8 @@ const [studentsList, setStudentsList] = useState([]);
                     </div>
                 </div>
             </div>
-        </div>
+            <Footer />
+        </main>
     );
 };
 

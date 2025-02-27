@@ -587,18 +587,17 @@ body.dark-mode {
     display: flex;
     align-items: center;
     margin: 0 auto;
-    width: 100%;
+    width: 80%;
     max-width: 300px;
     padding: 15px;
     border-radius: 12px;
-    
-
+  
   }
 
   .student-photo, .empty-photo {
-    width: 60px;
+    width: 70px;
     height: 60px;
-    border-radius: 50%;
+    border-radius: 1000%;
     background-size: cover;
     background-position: center;
 
@@ -786,7 +785,7 @@ body.dark-mode .chat-message.user {
 @media (max-width: 768px) {     
   .chat-container {       
       width: 85%;       
-      height: 70vh;     
+      height: 80vh;     
   }     
   .linha {         
       margin-top: 1rem!important;         

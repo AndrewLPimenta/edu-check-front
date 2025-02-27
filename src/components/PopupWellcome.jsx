@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "./Button";
 import "../styles/modal.css";
 
 const PopupWellcome = ({ onSelect }) => {
@@ -8,9 +9,10 @@ const PopupWellcome = ({ onSelect }) => {
         <h2>Bem-vindo ao Sistema</h2>
         <p>Selecione uma opção para continuar:</p>
         <div className="button-div">
-
-        <button className="select-to" onClick={() => onSelect("aluno")}>Aluno</button>
-        <button className="select-to" onClick={() => onSelect("professor")}>Professor</button>
+        <Button textButton="Aluno" onClick={() => onSelect("aluno")} />
+        <Button textButton="Professor" onClick={() => onSelect("professor")} />
+        {/* <button className="select-to" onClick={() => onSelect("aluno")}>Aluno</button>
+        <button className="select-to" onClick={() => onSelect("professor")}>Professor</button> */}
         </div>
       </div>
     </div>

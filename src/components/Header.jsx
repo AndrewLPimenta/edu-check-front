@@ -87,7 +87,7 @@ const Header = () => {
     const handleScroll = () => {
       const header = document.querySelector("#header");
       if (header) {
-        header.classList.toggle("rolagem", window.scrollY > 500);
+        header.classList.toggle("rolagem", window.scrollY > 10);
       }
     };
 
@@ -135,7 +135,7 @@ const Header = () => {
                 {!isAuthenticated ? (
                   <li className="btn-contato">
                     <Link to="/contato">
-                      <Button></Button>
+
                     </Link>
                   </li>
                 ) : (

@@ -70,7 +70,7 @@ const PopupOnly = ({ onClose }) => {
         </div>
     
         <div className="button-div">
-          <Button className="only-loguin" onClick={handleLogin}>Entrar</Button>
+          <Button  textButton="Area do Aluno" className="only-loguin" onClick={handleLogin}></Button>
         </div>
       </div>
     </div>

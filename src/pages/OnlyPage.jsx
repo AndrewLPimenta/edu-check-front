@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import CommentBox from "../components/CommentBox";
-import "../styles/userPages.css";
+import Footer from "../components/Footer";
 import Climax from "../components/Climax";
+import "../styles/userPages.css";
+
 const OnlyPage = ({ student = { id: 1, name: "Aluno", registration: "000000", photo: "https://via.placeholder.com/100" } }) => {
     const [profilePhoto, setProfilePhoto] = useState(student.photo);
 
@@ -86,6 +88,7 @@ const OnlyPage = ({ student = { id: 1, name: "Aluno", registration: "000000", ph
 
 
             </div>
+            <Footer />
         </main>
 
     );

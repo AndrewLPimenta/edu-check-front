@@ -55,7 +55,6 @@ const PopupMaster = ({ onClose }) => {
             id="password"
             name="password"
             required
-            autoComplete="new-password"
             placeholder=" "
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -74,6 +73,7 @@ const PopupMaster = ({ onClose }) => {
 
         <div className="button-div">
           <Button 
+          textButton="Area do Professor"
             onClick={handleLogin} 
             disabled={loading}
             >

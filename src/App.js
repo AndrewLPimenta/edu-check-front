@@ -5,8 +5,8 @@ import MasterPage from "./pages/MasterPage";
 import OnlyPage from "./pages/OnlyPage";
 import ListOnly from "./pages/ListOnly";
 import SupportPage from "./pages/SupportPage";
-import "./styles/global.css";
 import Profile from "./pages/Profile";
+import "./styles/global.css";
 
 function App() {
   return (
