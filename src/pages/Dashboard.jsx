@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLoader } from "../context/LoaderContext";
 import "../styles/dashboard.css";
 import Header from "../components/Header";
 import PopupWellcome from "../components/PopupWellcome";
@@ -6,24 +7,34 @@ import PopupOnly from "../components/PopupOnly";
 import PopupMaster from "../components/PopupMaster";
 
 const Dashboard = () => {
-    const [showWelcome, setShowWelcome] = useState(true);
     const [popup, setPopup] = useState(null);
+    const [showPopup, setShowPopup] = useState(false); 
+    const { setLoading, isNavigating } = useLoader();
 
     const handleSelection = (type) => {
-        setShowWelcome(false); // Esconde o Welcome
         setPopup(type); 
     };
+    
     const handleClose = () => {
-        setPopup(null); // Fecha qualquer popup
+        setPopup(null);
     };
 
+    useEffect(() => {
+        setLoading(true);
+        setTimeout(() => {
+            setLoading(false);
+            setShowPopup(true); //  Exibe o popup apenas quando o loader some
+        }, 2000);
+    }, [setLoading]);
+
     return (
-        <main className="dashboard">
-            <Header />
-            {/* Garante que o Welcome volta caso nenhum popup esteja aberto */}
-            {popup === null && <PopupWellcome onSelect={handleSelection} />}
-            {popup === "aluno" && <PopupOnly onClose={handleClose} />}
-            {popup === "professor" && <PopupMaster onClose={handleClose} />}
+        <main className={`dashboard ${isNavigating ? "blurred" : ""}`}>
+            <div className={`main ${isNavigating ? "blurred" : ""}`}>   
+                <Header />
+                {showPopup && popup === null && <PopupWellcome onSelect={handleSelection} />} 
+                {popup === "aluno" && <PopupOnly onClose={handleClose} />}
+                {popup === "professor" && <PopupMaster onClose={handleClose} />}
+            </div> 
         </main>
     );
 };

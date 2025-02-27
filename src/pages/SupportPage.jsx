@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "../components/Header";
+import { useLoader } from "../context/LoaderContext";
 import "../styles/userPages.css";
+
 
 const chatFlow = {
   inicio: {
@@ -143,9 +145,15 @@ const chatFlow = {
 };
 
 export default function ChatBot() {
+  const { setLoading } = useLoader(); 
   const [chat, setChat] = useState([{ sender: "bot", text: chatFlow.inicio.message }]);
   const [currentStep, setCurrentStep] = useState("inicio");
   const [isTyping, setIsTyping] = useState(false);
+
+  useEffect(() => {
+    setLoading(true); 
+    setTimeout(() => setLoading(false), 1000); 
+  }, [setLoading]); 
 
   const handleUserMessage = (option) => {
     setChat((prev) => [...prev, { sender: "user", text: option.text }]);

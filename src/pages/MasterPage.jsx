@@ -3,11 +3,19 @@ import Header from "../components/Header";
 import CustomCalendar from "../components/CustomCalendar";
 import QRCodeComponent from "../components/QrCodeComponent";
 import Presents from "../components/Presents";
+import { useLoader } from "../context/LoaderContext";
 import Footer from "../components/Footer";
+
 import "../styles/userPages.css";
 
 const GenerateQRCode = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
+    const { setLoading } = useLoader(); 
+
+    useEffect(() => {
+        setLoading(true); 
+        setTimeout(() => setLoading(false), 1000); 
+      }, [setLoading]);
 
     useEffect(() => {
         setSelectedDate(new Date());

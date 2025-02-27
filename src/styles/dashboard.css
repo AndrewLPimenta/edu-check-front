@@ -19,3 +19,13 @@ body {
     transition: background-image 0.3s ease-in-out;
   }
   
+
+  .dashboard {
+    transition: filter 0.3s ease-in-out;
+  }
+  
+  .dashboard.blurred {
+    filter: blur(80px); /* ✅ Aplica o efeito de desfoque */
+    pointer-events: none; /* ✅ Evita interações com a tela */
+  }
+  
