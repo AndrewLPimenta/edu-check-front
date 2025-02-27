@@ -535,15 +535,15 @@ body.dark-mode   .btn-contato button {
     }
     
   header.rolagem {
-    padding: 10px 0%;
+    padding: 0px 0%!important;
   }
   body.dark-mode  header.rolagem {
-    background-color: var(--cor-fundo-2)!important;
+
     transition: background-color 0.3s ease;
   }
   
   body.light-mode header.rolagem {
-    background-color: var(--cor-textos-3)!important;
+
     transition: background-color 0.3s ease;
   }
     .logo {
