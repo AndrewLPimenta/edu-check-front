@@ -12,12 +12,16 @@ const OnlyPage = ({
 }) => {
   const [profilePhoto, setProfilePhoto] = useState(student.photo);
   const { setLoading } = useLoader();
-  const [scanResult, setScanResult] = useState(null); 
+  const [scanResult, setScanResult] = useState(null);
+  const [loading, setLoadingState] = useState(true); // Estado para controlar o carregamento da página
 
   useEffect(() => {
-    setLoading(true); 
-    setTimeout(() => setLoading(false), 1000); 
-  }, [setLoading]);
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setLoadingState(false); // Após o carregamento, altera o estado para exibir o conteúdo
+    }, 1000); // Verifique se 1000ms é o tempo ideal
+  }, []);
 
   const handlePhotoChange = (event) => {
     const file = event.target.files[0];
@@ -32,23 +36,27 @@ const OnlyPage = ({
     <main>
       <Header />
       <div className="line">
-        <h1>Área do Aluno</h1>
+        <h2>Área do Aluno</h2>
         <span></span>
       </div>
 
-      <div className="only-on">
-        <h2>Seja bem-vindo!</h2>
-        <div className="empty-card">
-          <div 
-            className="empty-photo" 
-            style={{ backgroundImage: `url(${profilePhoto})` }}
-          />
-          <div className="empty-info">
-            <p className="empty-title">{student.name}</p>
-            <p className="empty-text">Matrícula: {student.registration}</p>
+      {loading ? (
+        <div>Carregando...</div> // Mostrar uma mensagem ou um indicador de carregamento
+      ) : (
+        <div className="only-on">
+          <h2>Seja bem-vindo!</h2>
+          <div className="empty-card">
+            <div 
+              className="empty-photo" 
+              style={{ backgroundImage: `url(${profilePhoto})` }}
+            />
+            <div className="empty-info">
+              <p className="empty-title">{student.name}</p>
+              <p className="empty-text">Matrícula: {student.registration}</p>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       <div className="only-page-container">
         <div className="only-container">
@@ -58,13 +66,11 @@ const OnlyPage = ({
 
           <div className="only-div">
             <div className="only-div-children">
-              <div className="qrcode-scanner">
-                {/* Aqui, sempre mostra a área do QR Code */}
-               
-              </div>
-
-              {/* Exibe o scanner diretamente sem necessidade de alternância */}
-              <QRCodeScanner scanning={true} setScanResult={setScanResult} />
+              {/* Exibe o scanner após o carregamento da página */}
+              {!loading && <QRCodeScanner setScanResult={setScanResult} />} 
+              {scanResult && (
+                <p className="scan-result">QR Code detectado: {scanResult}</p>
+              )}
             </div>
 
             <div className="only-div-children">
@@ -81,7 +87,7 @@ const OnlyPage = ({
           </div>
         </div>
       </div>
-      
+
       <Footer />
     </main>
   );
