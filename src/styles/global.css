@@ -200,7 +200,7 @@ backdrop-filter: blur(10px); /* 🔹 Efeito de desfoque */
 /* 🔥 Efeito ao clicar */
 .animated-button:active {
   scale: 0.95;
-  box-shadow: 0 0 0 4px var(--cor-borda);
+  box-shadow: 0 0 0 4px var(--cor-borda-1);
 }
 
 /* 🔥 Aumento do círculo ao passar o mouse */
@@ -214,8 +214,8 @@ backdrop-filter: blur(10px); /* 🔹 Efeito de desfoque */
 
 
 body.light-mode .animated-button {
-  color: var(--cor-textos-3); /* 🔹 Cor do texto */
-  box-shadow: 0 0 0 2px var(--cor-botao-2); /* 🔹 Cor da borda */
+  color: var(--cor-textos-1); /* 🔹 Cor do texto */
+  box-shadow: 0 0 0 2px var(--cor-botao-1)!important; /* 🔹 Cor da borda */
   border: 1px solid var(--cor-botao-1); 
 }
 
@@ -247,8 +247,58 @@ body.dark-mode .animated-button .circle {
   background-color: var(--cor-fundo-1); /* 🔹 Cor da animação do círculo */
 }
 
+.select-div{
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  gap: 1.8rem;
+}
 
+body.dark-mode .select-home {
+  background-color: var(--cor-fundo-5);
+}
 
+body.light-mode .select-home {
+  background-color: var(--cor-fundo-2);
+  color: var(--cor-fundo-3);
+  
+
+}
+
+.select-home {
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    font-size: 16px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    overflow: hidden;
+
+}
+
+.option-home {
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 16px 36px;
+    font-size: 16px;
+  
+
+ 
+    border-radius: 100px;
+    font-weight: 600;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
 
 .switch {
     position: relative;

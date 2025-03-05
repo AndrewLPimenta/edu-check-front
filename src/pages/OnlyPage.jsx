@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
-import Button from "../components/Button";
 import CommentBox from "../components/CommentBox";
 import Footer from "../components/Footer";
 import Climax from "../components/Climax";
@@ -13,7 +12,6 @@ const OnlyPage = ({
 }) => {
   const [profilePhoto, setProfilePhoto] = useState(student.photo);
   const { setLoading } = useLoader();
-  const [scanning, setScanning] = useState(false);  // Controle do estado do scanner
   const [scanResult, setScanResult] = useState(null); 
 
   useEffect(() => {
@@ -28,10 +26,6 @@ const OnlyPage = ({
       reader.onloadend = () => setProfilePhoto(reader.result);
       reader.readAsDataURL(file);
     }
-  };
-
-  const handleScannerButtonClick = () => {
-    setScanning(true); // Habilita o scanner
   };
 
   return (
@@ -59,25 +53,18 @@ const OnlyPage = ({
       <div className="only-page-container">
         <div className="only-container">
           <div className="only-text">
-            <p>Agora basta ler o QR Code para marcar sua presença hoje!</p>
+            <p>Apenas Leia, e estará Presente!</p>
           </div>
 
           <div className="only-div">
             <div className="only-div-children">
               <div className="qrcode-scanner">
-                <p className="expiration-text">Área de Leitura do QR Code</p>
+                {/* Aqui, sempre mostra a área do QR Code */}
+               
               </div>
 
-              {/* A caixa do scanner estará visível quando 'scanning' for true */}
-              <QRCodeScanner scanning={scanning} setScanResult={setScanResult} />
-
-              {/* O botão agora só abre a câmera e inicia o scanner */}
-              <div className="link-edit">
-                <Button
-                  onClick={handleScannerButtonClick}  // Ativa o scanner ao clicar no botão
-                  textButton="Abrir Câmera"
-                />
-              </div>
+              {/* Exibe o scanner diretamente sem necessidade de alternância */}
+              <QRCodeScanner scanning={true} setScanResult={setScanResult} />
             </div>
 
             <div className="only-div-children">

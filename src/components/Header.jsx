@@ -58,13 +58,11 @@ const Header = () => {
     };
   }, []);
 
-  // Verifica se o usuário está logado com base no token
   useEffect(() => {
     const token = localStorage.getItem("token");
     setIsAuthenticated(!!token);
   }, []);
 
-  // Função para sair (limpa o token)
   const handleLogout = () => {
     localStorage.removeItem("token");
     setIsAuthenticated(false);

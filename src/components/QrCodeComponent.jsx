@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import QRCode from "react-qr-code";
-import "../styles/userPages.css";
+import Button from "./Button";
+import "../styles/qr.css";
 
 const QRCodeComponent = ({ selectedDate }) => {
     const [qrCodeData, setQrCodeData] = useState(null);
@@ -40,9 +41,12 @@ const QRCodeComponent = ({ selectedDate }) => {
 
     return (
         <div >
-            <button className="generate-btn" onClick={generateQRCode}>
-                Gerar QR Code
-            </button>
+            <div className="div-button">
+            <Button
+            onClick={generateQRCode}
+            textButton="Gerar QR Code"
+            />
+</div>
             {qrCodeData ? (
                 <div className="qrcode-display">
                     <QRCode value={qrCodeData} size={200} />
